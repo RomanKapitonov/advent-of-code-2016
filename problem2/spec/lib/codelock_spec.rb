@@ -13,19 +13,19 @@ RSpec.describe Codelock do
       end
     end
 
-    include_examples 'moves through nums', initial: :five, step: :up, result: :two
-    include_examples 'moves through nums', initial: :five, step: :down, result: :eight
+    include_examples 'moves through nums', initial: :five, step: :up, result: :five
+    include_examples 'moves through nums', initial: :five, step: :down, result: :five
     include_examples 'moves through nums', initial: :five, step: :right, result: :six
-    include_examples 'moves through nums', initial: :five, step: :left, result: :four
+    include_examples 'moves through nums', initial: :five, step: :left, result: :five
 
     include_examples 'moves through nums', initial: :one, step: :up, result: :one
-    include_examples 'moves through nums', initial: :one, step: :down, result: :four
-    include_examples 'moves through nums', initial: :one, step: :right, result: :two
+    include_examples 'moves through nums', initial: :one, step: :down, result: :three
+    include_examples 'moves through nums', initial: :one, step: :right, result: :one
     include_examples 'moves through nums', initial: :one, step: :left, result: :one
 
-    include_examples 'moves through nums', initial: :six, step: :up, result: :three
-    include_examples 'moves through nums', initial: :six, step: :down, result: :nine
-    include_examples 'moves through nums', initial: :six, step: :right, result: :six
+    include_examples 'moves through nums', initial: :six, step: :up, result: :two
+    include_examples 'moves through nums', initial: :six, step: :down, result: :a
+    include_examples 'moves through nums', initial: :six, step: :right, result: :seven
     include_examples 'moves through nums', initial: :six, step: :left, result: :five
   end
 
@@ -33,7 +33,10 @@ RSpec.describe Codelock do
     subject(:codelock) { described_class.new() }
 
     it 'gives answer' do
-      codelock.go! # 74921
+      codelock.go! # 74921 - Part 1
+                   # A6B35 - Part 2
     end
   end
 end
+
+

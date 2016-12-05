@@ -1,15 +1,17 @@
-require 'numbers_in_words'
-
 NUMS = {
-  one: { up: :noop, right: :two, down: :four, left: :noop },
-  two: { up: :noop, right: :three, down: :five, left: :one },
-  three: { up: :noop, right: :noop, down: :six, left: :two },
-  four: { up: :one, right: :five, down: :seven, left: :noop },
-  five: { up: :two, right: :six, down: :eight, left: :four },
-  six: { up: :three, right: :noop, down: :nine, left: :five },
-  seven: { up: :four, right: :eight, down: :noop, left: :noop },
-  eight: { up: :five, right: :nine, down: :noop, left: :seven },
-  nine: { up: :six, right: :noop, down: :noop, left: :eight }
+  one: { up: :noop, right: :noop, down: :three, left: :noop },
+  two: { up: :noop, right: :three, down: :six, left: :noop },
+  three: { up: :one, right: :four, down: :seven, left: :two },
+  four: { up: :noop, right: :noop, down: :eight, left: :three },
+  five: { up: :noop, right: :six, down: :noop, left: :noop },
+  six: { up: :two, right: :seven, down: :a, left: :five },
+  seven: { up: :three, right: :eight, down: :b, left: :six },
+  eight: { up: :four, right: :nine, down: :c, left: :seven },
+  nine: { up: :noop, right: :noop, down: :noop, left: :eight },
+  a: { up: :six, right: :b, down: :noop, left: :noop },
+  b: { up: :seven, right: :c, down: :d, left: :a },
+  c: { up: :eight, right: :noop, down: :noop, left: :b },
+  d: { up: :b, right: :noop, down: :noop, left: :noop },
 }.freeze
 
 NUMS.each do |num, ops|
@@ -24,7 +26,7 @@ NUMS.each do |num, ops|
       end
 
       define_singleton_method :to_s do
-        NumbersInWords.in_numbers(num)
+        num.to_s
       end
     end
   end
@@ -64,7 +66,7 @@ class Codelock
       end
       code << @current_state.to_s
     end
-    puts code.join('')
+    puts code.join(' ')
   end
 
   def instructions
