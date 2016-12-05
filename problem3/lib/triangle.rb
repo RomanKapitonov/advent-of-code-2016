@@ -12,11 +12,51 @@ class Triangle
   end
 end
 
-file = File.expand_path('input', File.dirname(__FILE__))
-result = File.open(file).map do |line|
-  line.strip.gsub(/\s+/, ' ').split(' ').map(&:to_i)
-end.map do |sides|
-  Triangle.new(*sides)
-end.select(&:possible?).count
+class Line
+  attr_reader :data
 
-puts result # 993
+  def initialize(raw_string)
+    @data = raw_string.split.map(&:to_i)
+  end
+end
+
+class Checker
+  attr_reader :filename, :file
+
+  def initialize
+    @filename = File.expand_path('input', File.dirname(__FILE__))
+  end
+
+  def file
+    @file ||= File.open(filename)
+  end
+
+  def triangles
+    @triangles ||= sides.map do |sides|
+      Triangle.new(*sides)
+    end
+  end
+
+  def possible
+    triangles.select(&:possible?)
+  end
+end
+
+class ByRow < Checker
+  def sides
+    @sides ||= file.map do |line|
+      Line.new(line).data
+    end
+  end
+end
+
+class ByColumn < Checker
+  def sides
+    @sides ||= file.each_slice(3).map do |lines|
+      lines.map { |line| Line.new(line).data }.transpose
+    end.inject(:+)
+  end
+end
+
+puts ByRow.new.possible.count    # 993
+puts ByColumn.new.possible.count # 1849
