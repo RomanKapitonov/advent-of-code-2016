@@ -1,4 +1,4 @@
---- Day 1: No Time for a Taxicab ---
+# Day 1: No Time for a Taxicab
 
 Santa's sleigh uses a very high-precision clock to guide its movements,
 and the clock's oscillator is regulated by stars. Unfortunately,
@@ -28,4 +28,15 @@ For example:
 Following R2, L3 leaves you 2 blocks East and 3 blocks North, or 5 blocks away.
 R2, R2, R2 leaves you 2 blocks due South of your starting position, which is 2 blocks away.
 R5, L5, R5, R3 leaves you 12 blocks away.
-How many blocks away is Easter Bunny HQ?
+
+### How many blocks away is Easter Bunny HQ?
+
+# Part Two
+
+Then, you notice the instructions continue on the back of the Recruiting Document.
+Easter Bunny HQ is actually at the first location you visit twice.
+
+For example, if your instructions are R8, R4, R4, R8, the first location you
+visit twice is 4 blocks away, due East.
+
+### How many blocks away is the first location you visit twice?

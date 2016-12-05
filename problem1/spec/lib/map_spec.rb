@@ -21,12 +21,22 @@ RSpec.describe Map do
   include_examples 'pointer moves', moves: ['R3', 'L3', 'R3', 'L3'], exp_x: 6, exp_y: 6
   include_examples 'pointer moves', moves: ['L3', 'L3', 'R3', 'L3'], exp_x: -6, exp_y: -6
 
-  describe '#final_distance!' do
+  describe '#final_distance' do
     subject(:map) { described_class.new }
 
     it 'should walk through the path' do
       # Answer!
       expect(map.final_distance).to eq(209)
+    end
+  end
+
+  describe '#distance_to_first_intersection' do
+    subject(:map) { described_class.new }
+
+    before { map.go! }
+
+    it 'should find distance to first intersection' do
+      expect(map.distance_to_first_intersection).to eq(136)
     end
   end
 end
