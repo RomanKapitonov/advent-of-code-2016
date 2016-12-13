@@ -5,18 +5,18 @@
 #   (\p{Word}) # First letter
 #   (?!\1)     # Should not repeat
 #   (\p{Word}) # Second letter
-#   \2         # Mirrored second letter
-#   \1         # Mirrored first letter
+#   \2         # Second letter should be mirrored
+#   \1         # First letter should be mirrored
 # )
 # (            # Brackets group
 #   ?!         # Should not be present
 #   .*         # Should match everything before brackets
 #   \[[^\]]*   # Start with square followed by symbols other than closing bracket
 #   (\p{Word}) # First letter
-#   (?!\3)     # Should not repeat inside brackets
+#   (?!\3)     # Should not repeat
 #   (\p{Word}) # Second letter
-#   \4         # Mirrored second letter
-#   \3         # Mirrored first letter
+#   \4         # Second letter should be mirrored
+#   \3         # First letter should be mirrored
 # )
 # /
 class Line < String
@@ -32,7 +32,7 @@ class Parser
   attr_reader :file
 
   def initialize
-    @file = File.open(File.expand_path('input', File.dirname(__FILE__)))
+    @file = File.open(File.expand_path('../input', __FILE__))
   end
 
   def count

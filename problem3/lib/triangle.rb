@@ -57,6 +57,3 @@ class ByColumn < Checker
     end.inject(:+)
   end
 end
-
-puts ByRow.new.possible.count    # 993
-puts ByColumn.new.possible.count # 1849

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'room'
 
 RSpec.describe Room do
   describe 'rooms' do

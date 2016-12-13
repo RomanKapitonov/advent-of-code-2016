@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'codelock'
 
 RSpec.describe Codelock do
   describe 'Nums' do
@@ -30,11 +29,14 @@ RSpec.describe Codelock do
   end
 
   describe '#go!' do
-    subject(:codelock) { described_class.new() }
+    subject(:codelock) { described_class.new }
 
-    it 'gives answer' do
-      codelock.go! # 74921 - Part 1
-                   # A6B35 - Part 2
+    before { codelock.go! }
+
+    # 74921 - Part 1
+    # A6B35 - Part 2
+    it 'counts answer for part 1' do
+      expect(codelock.code.join(' ')).to eq('a six b three five')
     end
   end
 end

@@ -1,7 +1,7 @@
 require 'move'
 
 class Path
-  FILENAME = File.expand_path('input', File.dirname(__FILE__))
+  FILENAME = File.expand_path('../input', __FILE__)
 
   attr_reader :file, :raw_moves, :moves
 

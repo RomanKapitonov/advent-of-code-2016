@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'triangle'
 
 RSpec.describe Triangle do
   describe '#possible?' do
@@ -19,5 +18,25 @@ RSpec.describe Triangle do
     include_examples 'check triangle', sides: [674, 524, 68], possible: false
     include_examples 'check triangle', sides: [467, 452, 792], possible: true
     include_examples 'check triangle', sides: [841, 519, 660], possible: true
+  end
+end
+
+RSpec.describe ByRow do
+  describe '#possible' do
+    subject(:possible) { described_class.new.possible }
+
+    it 'should return correct result' do
+      expect(possible.count).to eq(993)
+    end
+  end
+end
+
+RSpec.describe ByColumn do
+  describe '#possible' do
+    subject(:possible) { described_class.new.possible }
+
+    it 'should return correct result' do
+      expect(possible.count).to eq(1849)
+    end
   end
 end

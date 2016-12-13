@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'parser'
 
 RSpec.describe Parser do
   describe '#count' do

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'password_cracker'
 
 RSpec.describe PasswordCracker do
   subject(:cracker) { described_class.new }

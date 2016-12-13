@@ -67,7 +67,7 @@ class Hotel
   attr_reader :raw_list, :rooms
 
   def initialize
-    @raw_list = File.open(File.expand_path('input', File.dirname(__FILE__)))
+    @raw_list = File.open(File.expand_path('../input', __FILE__))
   end
 
   def rooms

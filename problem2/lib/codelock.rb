@@ -66,7 +66,6 @@ class Codelock
       end
       code << @current_state.to_s
     end
-    puts code.join(' ')
   end
 
   def instructions

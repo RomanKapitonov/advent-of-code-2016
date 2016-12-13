@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'decoder'
 
 RSpec.describe Decoder do
   describe '#decode!' do

@@ -18,7 +18,7 @@ class Decoder
   attr_reader :columns
 
   def initialize
-    file = File.open(File.expand_path('input', File.dirname(__FILE__)))
+    file = File.open(File.expand_path('../input', __FILE__))
     @columns = Array.new(8) { Column.new }
 
     file.each do |line|
