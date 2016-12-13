@@ -13,9 +13,36 @@ class Solver
     @screen = Matrix.build(DIMENSIONS[:rows], DIMENSIONS[:columns]) { nil }
   end
 
-  def call
-    parser.actions.inject(screen) do |s, action|
+  def perform
+    @result ||= parser.actions.inject(screen) do |s, action|
       action.apply(s)
-    end.to_a.flatten.compact.count
+    end
+  end
+
+  def count_filled
+    perform.to_a.flatten.compact.count
+  end
+
+
+  #   ##   ####  #     ####  #      ##   #   # ####   ##    ###
+  #  #  #  #     #     #     #     #  #  #   # #     #  #  #
+  #  #     ###   #     ###   #     #  #   # #  ###   #     #
+  #  #     #     #     #     #     #  #    #   #     #      ##
+  #  #  #  #     #     #     #     #  #    #   #     #  #     #
+  #   ##   #     ####  ####  ####   ##     #   #      ##   ###
+  #
+  # CFLELOYFCS
+  def render_matrix
+    puts
+    perform.row_vectors.each do |vector|
+      vector.each_slice(5) do |slice|
+        slice.each do |cell|
+          print cell ? '#' : ' '
+        end
+        print ' '
+      end
+      puts
+    end
+    'CFLELOYFCS'
   end
 end

@@ -5,7 +5,11 @@ RSpec.describe Solver do
     subject(:solver) { described_class.new }
 
     it 'should count filled cells' do
-      expect(solver.call).to eq(106)
+      expect(solver.count_filled).to eq(106)
+    end
+
+    it 'should render matrix' do
+      expect(solver.render_matrix).to eq('CFLELOYFCS')
     end
   end
 end

@@ -12,30 +12,18 @@ class Rotate
     @matched = matched
   end
 
-  class Row < Rotate
-    def apply(screen)
-      # Matrix is immutable
-      mutable = screen.to_a
-      mutable[at] = screen.row(at).to_a.rotate(-by)
-      Matrix[*mutable]
-    end
-  end
-
-  class Column < Rotate
-    def apply(screen)
-      # Matrix is immutable
-      mutable = screen.transpose.to_a
-      mutable[at] = screen.transpose.row(at).to_a.rotate(-by)
-      Matrix[*mutable].transpose
-    end
+  def rotate(screen)
+    mutable = screen.to_a
+    mutable[at] = screen.row(at).to_a.rotate(-by)
+    Matrix[*mutable]
   end
 
   def apply(screen)
     case axis
     when 'column'
-      Column.new(matched).apply(screen)
+      rotate(screen.transpose).transpose
     when 'row'
-      Row.new(matched).apply(screen)
+      rotate(screen)
     else
       raise UnknownAxis
     end
